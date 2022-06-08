@@ -36,8 +36,6 @@ def save(author):
     return author
 
 
-
-
 def delete_all():
     sql = "DELETE FROM authors"
     run_sql(sql)
@@ -46,4 +44,10 @@ def delete_all():
 def delete(id):
     sql = "DELETE FROM authors WHERE id = %s"
     values = [id]
+    run_sql(sql, values)
+
+
+def update(author):
+    sql = "UPDATE authors SET (name) = (%s) WHERE id = %s"
+    values = [author.name, author.id]
     run_sql(sql, values)
