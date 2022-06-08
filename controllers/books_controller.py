@@ -14,13 +14,24 @@ def books():
     return render_template("books/index.html", all_books=books)
 
 # New Book
-# POST ''
+# GET '/books/new'
+@books_blueprint.route("/books/new", methods=["GET"])
+def new_book():
+    authors = author_repository.select_all()
+    return render_template("books/new.html", all_authors=authors)
 
 
-
-
-
-
+# Create 
+# POST '/books'
+@books_blueprint.route("/books", methods=["POST"])
+def create_book():
+    title = request.form["title"]
+    author_id = request.form["author_id"]
+    genre = request.form["genre"]
+    author = author_repository.select(author_id)
+    book = Book(title, author, genre)
+    books_repository.save(book)
+    return redirect("/books")
 
 
 
