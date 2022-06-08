@@ -6,6 +6,15 @@ from models.book import Book
 import repositories.books_repository as books_repository
 import repositories.author_repository as author_repository
 
+
+def save(book):
+    sql = "INSERT INTO books (title, author_id, genre) VALUES (%s, %s, %s) RETURNING id"
+    values = [book.title, book.author.id, book.genre]
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    book.id = id
+    return book
+
 def select_all():
     books = []
     sql = "SELECT * FROM books"
@@ -27,15 +36,6 @@ def select(id):
     if result is not None:
         author = author_repository.select(result['user_id'])
         book = Book(result['title'], author, result['genre'], result['id'] )
-    return book
-
-
-def save(book):
-    sql = "INSERT INTO books (title, author_id, genre) VALUES (%s, %s, %s) RETURNING id"
-    values = [book.title, book.author.id, book.genre]
-    results = run_sql(sql, values)
-    id = results[0]['id']
-    book.id = id
     return book
 
 
