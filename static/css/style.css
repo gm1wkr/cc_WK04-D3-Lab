@@ -1,0 +1,125 @@
+:root{
+
+    --background-color: #fff;
+    --color: #444;
+    --color-accent: #9f4800;
+    --color-light: #ccc;
+}
+
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+}
+
+
+html{
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav > ul{
+    list-style: none;
+    display: flex;
+    margin-top: 2rem;
+    margin-right: 3rem;
+}
+
+nav > ul > li{
+    margin-left: 2rem;
+}
+
+nav > ul > li > a{
+    text-decoration: none;
+}
+
+
+main{
+    flex: 1;
+    max-width: 76vw;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.books{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+
+article{
+    margin-top: 3rem;
+    border: 1px solid var(--color-light);
+
+}
+
+
+.books h2{
+    margin-bottom: 0.3rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 100;
+}
+
+
+.books h2 > a{
+    text-decoration: none;
+    color: var(--color);
+}
+
+
+.books h2 > a:hover{
+    text-decoration: none;
+    color: var(--color-accent);
+}
+
+
+.books h3{
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 300;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, select{
+    padding: 0.4rem;
+    width: 8rem;
+}
+
+label > span{
+    display: inline-block;
+    min-width: 6rem;
+}
+
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.controls > *{
+    flex-grow: 1;
+}

@@ -8,7 +8,7 @@ from flask import Blueprint
 books_blueprint = Blueprint("books", __name__)
 
 # INDEX
-# GET '/tasks'
+# GET '/books'
 @books_blueprint.route("/books", methods=["GET"])
 def books():
     books = books_repository.select_all()

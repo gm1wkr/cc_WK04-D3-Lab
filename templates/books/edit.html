@@ -5,10 +5,12 @@
 <form action="/books/{{book.id}}" method="POST">
 
     <label for="title">
+        <span>Title</span>
         <input type="text" id="title" name="title" value="{{ book.title }}">
     </label>
 
     <label for="author">
+        <span>Author</span>
         <select name="author_id" id="author">
             {% for author in all_authors %}
                 <option value="{{ author.id }}"
@@ -22,6 +24,7 @@
 
 
     <label for="genre">
+        <span>Genre</span>
         <input type="text" id="genre" name="genre" value="{{ book.genre }}">
     </label>
 

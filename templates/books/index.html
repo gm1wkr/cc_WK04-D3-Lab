@@ -1,23 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <article>
-        {% for book in all_books %}
-            <h2>{{ book.title }}</h2>
-            <p>{{ book.author.name }}</p>
+<div class="books">
+    {% for book in all_books %}
+        <article>
+            <h2><a href="/books/{{ book.id }}">{{ book.title }}</a></h2>
+            <h3>by {{ book.author.name }}</h3>
             <p>{{ book.genre }}</p>
-            <p><a href="/books/{{ book.id }}">details ...</a></p>
-
-            <form action="/books/{{ book.id }}/delete" method="POST">
-                <button type="submit">
-                    DELETE {{ book.name }}
-                </button>
-            </form>
-
-            <p>
-                <a href="/books/{{ book.id }}/edit">EDIT {{ book.name }}</a>
-            </p>
             
-        {% endfor %}
-    </article>
+
+            <div class="controls">
+                <form action="/books/{{ book.id }}/delete" method="POST">
+                    <button type="submit">
+                        DELETE {{ book.name }}
+                    </button>
+                </form>
+                <p>
+                    <a href="/books/{{ book.id }}/edit">EDIT {{ book.name }}</a>
+                </p>
+            </div>
+
+        </article>
+    {% endfor %}
+</div>
 {% endblock content %}
