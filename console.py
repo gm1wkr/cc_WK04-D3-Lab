@@ -28,5 +28,8 @@ book_2 = Book("the Apology", author_2, "Classics")
 book_repository.save(book_2)
 
 book_3 = Book("Blardy Blah", author_1, "Classics")
+book_repository.save(book_3)
+
+books = book_repository.select_all()
 
 pdb.set_trace()
