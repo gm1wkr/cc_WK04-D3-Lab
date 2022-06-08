@@ -45,8 +45,8 @@ def show_book(id):
 
 
 # EDIT
-# PUT (POST) '/books/<id>'
-@books_blueprint.route("/books/<id>", methods=["POST"])
+# GET '/books/<id>'
+@books_blueprint.route("/books/<id>/edit", methods=["GET"])
 def edit_book(id):
     book = books_repository.select(id)
     authors = author_repository.select_all()
@@ -55,14 +55,14 @@ def edit_book(id):
 
 
 # UPDATE
-# POST '/books/<id>'
-@books_blueprint.route("/books/<id>/edit", methods=["POST"])
+# PUT (POST) '/books/<id>'
+@books_blueprint.route("/books/<id>", methods=["POST"])
 def update_book(id):
     title = request.form["title"]
     author_id = request.form["author_id"]
     genre = request.form["genre"]
     author = author_repository.select(author_id)
-    book = Book(title, author, genre)
+    book = Book(title, author, genre, id)
     books_repository.update(book)
     return redirect("/books")
 

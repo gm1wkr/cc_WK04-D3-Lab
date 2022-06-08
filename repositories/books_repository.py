@@ -40,8 +40,8 @@ def select(id):
 
 
 def update(book):
-    sql = "UPDATE tasks SET (d) = (%s, %s, %s) WHERE id = %s"
-    values = [book.title, book.user.id, book.genre, book.id]
+    sql = "UPDATE books SET (title, author_id, genre) = (%s, %s, %s) WHERE id = %s"
+    values = [book.title, book.author.id, book.genre, book.id]
     run_sql(sql, values)
 
 

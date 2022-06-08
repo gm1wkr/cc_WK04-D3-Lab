@@ -2,26 +2,30 @@
 
 {% block content %}
     
-<form action="/books" method="POST">
+<form action="/books/{{book.id}}" method="POST">
 
     <label for="title">
-        <input type="text" id="title" name="title">
+        <input type="text" id="title" name="title" value="{{ book.title }}">
     </label>
 
     <label for="author">
         <select name="author_id" id="author">
             {% for author in all_authors %}
-                <option value="{{ author.id }}">{{ author.name }}</option>
+                <option value="{{ author.id }}"
+                    {% if book.author.id == author.id %} selected="selected"{% endif %}
+                >
+                    {{ author.name }}
+                </option>
             {% endfor %}
         </select>
     </label>
 
 
     <label for="genre">
-        <input type="text" id="genre" name="genre">
+        <input type="text" id="genre" name="genre" value="{{ book.genre }}">
     </label>
 
-    <input type="submit" value="Add Book">
+    <input type="submit" value="Edit Book">
 </form>
 
 {% endblock content %}
